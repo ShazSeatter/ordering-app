@@ -58,14 +58,14 @@ h4, p {
 
 .item-ingredients, .item-price {
   margin-top: 7.5px;
-  font-size: 17px;
+  font-size: 20px;
 }
 
 .item-ingredients {
   color: #8B8B8B;
 }
 
-.btn-wrapper {
+.btn-wrapper, .price-wrapper {
   margin-left: auto;
   align-self: center;
 }
@@ -78,4 +78,46 @@ h4, p {
   color: #3C3C3C;
   font-size: 30px; 
   margin-right: auto; 
+}
+
+/* order section */
+
+.order-title {
+  font-size: 38px; 
+  text-align: center;
+}
+.order-container {
+  display: flex;
+  flex-direction: column;
+  margin: 40px; 
+}
+.order-details-container {
+  display: flex;
+ 
+}
+.order-details-wrapper {
+  display: flex;
+  gap: 10px;
+}
+
+.added-item-name {
+  font-size: 32px; 
+}
+
+.added-item-price {
+  font-size: 24px;
+}
+
+.btn-center {
+  align-self: center;
+}
+
+.rm-btn {
+  border: none;
+  background-color: white;
+  color: #BBBBBB;
+}
+
+.hidden {
+  display: none;
 }

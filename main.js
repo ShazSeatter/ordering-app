@@ -1,13 +1,74 @@
 
 import { menuArray } from "./data";
 
+const arrOfOrders = []
 
+document.addEventListener('click', function(e) {
+  if (e.target.dataset.add) {
+    handleAddBtnClick(e.target.dataset.add)
+    updateOrderSection()
+    getTotalOrder()
+  }
+})
+
+
+function handleAddBtnClick(itemId) {
+
+  const singleItemOrderObj = menuArray.filter(function(item) {
+    return itemId === item.id.toString()
+  })[0]
+  // if single object found, then add it to the orders array 
+
+  if (singleItemOrderObj) {
+    arrOfOrders.push(singleItemOrderObj)
+  }
+
+}
+
+function getTotalOrder() {
+  const totalPrice = arrOfOrders.reduce((total, currentFoodItem) => {
+    return total + currentFoodItem.price
+  }, 0)
+  
+  const totalContainerElement = document.getElementById('total-price-container')
+  const totalPriceElement = document.getElementById('total-price')
+
+  if (arrOfOrders.length > 0) {
+    totalContainerElement.classList.remove('hidden')
+    totalPriceElement.textContent = `$${totalPrice}`
+  } else {
+    totalContainerElement.classList.add('hidden')
+  }
+
+}
+
+function updateOrderSection() {
+
+  const orderSection = arrOfOrders.map((itemOrder) => {
+    const {name, price} = itemOrder
+    return `
+      <div class="order-details-container">
+        <div class="order-details-wrapper">
+        <p class="added-item-name">${name}</p>
+        <div class="btn-center">
+          <button class="rm-btn">remove</button>
+        </div>
+        </div>
+        <div class="price-wrapper">
+          <p class="added-item-price">$${price}</p>
+        </div>
+      </div>
+    `
+  }).join("")
+
+  document.getElementById('order-container').innerHTML = orderSection
+}
 function getItemsHTML() {
   // need to map through data to add it to HTML template 
 
   const foodItemsArr = menuArray.map((item) => {
 
-    const {name, ingredients, price, emoji} = item
+    const {name, ingredients, id, price, emoji} = item
 
     return `
         <div class="food-item-card">
@@ -18,11 +79,13 @@ function getItemsHTML() {
             <p class="item-price">$${price}</p>
           </div>
           <div class="btn-wrapper">
-            <button class="add-btn">+</button>
+            <button class="add-btn" data-add=${id}>+</button>
           </div>
         </div> 
+        
     `
   }).join("")
+
   return foodItemsArr
 }
 function render() {
