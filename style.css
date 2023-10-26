@@ -150,3 +150,63 @@ h4, p {
   padding: 15px 25px; 
  
 }
+
+/* pay section */
+
+.pay-modal-inner {
+  display: none; /* changed to flex*/
+  position: fixed;
+  top: 80px;
+  left: 0;
+  right: 0;
+  flex-direction: column;
+  margin: 40px;
+  width: 300px;
+  margin: 0 auto;
+  padding: 38px 25px; 
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  box-shadow: 5px 5px 80px 1px #dcdbdb, -5px -5px 80px 1px #dcdbdb;
+  background-color: white;
+}
+
+.card-details-heading {
+  text-align: center;
+  font-size: 16px;
+  margin: 0 0 20px 0;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+input[type=text] {
+  padding: 13px 20px;
+  color: #757575;
+  margin-top: 14px; 
+  border: 1px solid #757575;
+  font-size: 16px; 
+  border-radius: 2px;
+}
+
+.pay-btn {
+  background-color: #16DB99;
+  width: 100%;
+  padding: 15px 25px;
+  color: white;
+  font-weight: bold;
+  border: none;
+  margin-top: 30px; 
+  border-radius: 2px;
+}
+
+.order-complete-wrapper {
+  background-color: #ECFDF5;
+  margin: 40px 40px 60px 40px;
+  padding: 30px;
+}
+.payment-complete {
+  text-align: center;
+  color: #065F46;
+  font-size: 25px; 
+}

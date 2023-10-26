@@ -10,6 +10,10 @@ document.addEventListener('click', function(e) {
   } else if (e.target.dataset.remove) {
     handleRemoveBtnClick(e.target.dataset.remove) 
     orderCalls()
+  } else if (e.target.id === 'complete-order-btn') {
+    handlePurchaseOrderClick()
+  } else if (e.target.id === 'pay-btn') {
+    handlePayment()
   }
 })
 
@@ -19,6 +23,54 @@ function orderCalls() {
     getTotalOrder()
     addCheckOutElement()
 }
+
+function handlePayment() {
+  const orderItemsContainer = document.getElementById('order-items-container')
+  const nameInput = document.querySelector('input[type="text"][placeholder="Enter your name"]')
+  const name = nameInput.value
+
+  if (name) {
+    // safer than using innerHTML to inject infomration from input
+        // Create the new elements
+        const orderCompleteWrapper = document.createElement('div');
+        orderCompleteWrapper.classList.add('order-complete-wrapper');
+    
+        const paymentComplete = document.createElement('p');
+        paymentComplete.classList.add('payment-complete');
+        paymentComplete.textContent = `Thanks ${name}! Your order is on its way`;
+    
+        // Append elements to the order container
+        const orderContainer = document.getElementById('order-items-container');
+        orderContainer.innerHTML = ''; // Clear existing content
+        orderCompleteWrapper.appendChild(paymentComplete);
+        orderContainer.appendChild(orderCompleteWrapper);
+    
+        // Hide the pay modal
+        const payModal = document.getElementById('pay-modal-inner');
+        payModal.style.display = 'none';
+  } else {
+    alert("Please enter details before payment")
+  }
+
+}
+function handlePurchaseOrderClick() {
+  const payModal = document.getElementById('pay-modal-inner')
+
+  let payModalHtml = ``
+  payModalHtml = ` 
+              <h6 class="card-details-heading">Enter card details</h6>
+              <form>
+                <input type="text" placeholder="Enter your name" required/>
+                <input type="text" placeholder="Enter card number" required/>
+                <input type="text" placeholder="Enter CVV" required/>
+              </form>
+              <button type="submit" id="pay-btn" class="pay-btn">Pay</button>
+          `
+    payModal.innerHTML = payModalHtml
+    payModal.style.display = 'flex'
+  
+}
+
 
 function handleRemoveBtnClick(itemId) {
   // finding what index the item in question is at in the array of orders (so it knows what index to remove)
@@ -66,6 +118,7 @@ function addCheckOutElement() {
       const completeOrderBtn = document.createElement("button")
       completeOrderBtn.textContent = "Complete Order"
       completeOrderBtn.classList.add("complete-order-btn")
+      completeOrderBtn.id = "complete-order-btn"
       div.classList.add("complete-order-btn-wrapper")
       document.getElementById('order-items-container').append(div)
       div.appendChild(completeOrderBtn)
@@ -74,7 +127,6 @@ function addCheckOutElement() {
   } else if(checkoutWrapper) {
     checkoutWrapper.remove()
   }
-
 }
 
 function updateOrderSection() {
