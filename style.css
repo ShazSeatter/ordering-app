@@ -137,4 +137,16 @@ h4, p {
   border-top: 4px solid black;
   padding-top: 20px; 
 }
-
+.complete-order-btn-wrapper {
+  margin: 40px;
+}
+.complete-order-btn {
+  color: white;
+  width: 100%;
+  background-color: #16DB99;
+  border: none;
+  font-size: 16px; 
+  font-weight: bold;
+  padding: 15px 25px; 
+ 
+}

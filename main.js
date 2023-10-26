@@ -6,18 +6,21 @@ const arrOfOrders = []
 document.addEventListener('click', function(e) {
   if (e.target.dataset.add) {
     handleAddBtnClick(e.target.dataset.add)
-    updateOrderSection()
-    getTotalOrder()
+    orderCalls()
   } else if (e.target.dataset.remove) {
     handleRemoveBtnClick(e.target.dataset.remove) 
-    updateOrderSection()
-    getTotalOrder()
-
+    orderCalls()
   }
 })
 
-function handleRemoveBtnClick(itemId) {
+// function to call all the nescessary functions
+function orderCalls() {
+    updateOrderSection()
+    getTotalOrder()
+    addCheckOutElement()
+}
 
+function handleRemoveBtnClick(itemId) {
   // finding what index the item in question is at in the array of orders (so it knows what index to remove)
   const itemIndex = arrOfOrders.findIndex((item) => itemId === item.id.toString());
 
@@ -25,9 +28,9 @@ function handleRemoveBtnClick(itemId) {
   if (itemIndex !== -1) {
     arrOfOrders.splice(itemIndex, 1); // Remove the item from the order
   }
-
-  console.log(arrOfOrders)
 }
+
+// this function is only handling pushing orders to array of orders 
 function handleAddBtnClick(itemId) {
 
   const singleItemOrderObj = menuArray.filter(function(item) {
@@ -42,10 +45,7 @@ function handleAddBtnClick(itemId) {
 }
 
 function getTotalOrder() {
-  const totalPrice = arrOfOrders.reduce((total, currentFoodItem) => {
-    return total + currentFoodItem.price
-  }, 0)
-  
+  const totalPrice = getTotalPrice()
   const totalPriceElement = document.getElementById('total-price')
 
   if (arrOfOrders.length > 0) {
@@ -53,6 +53,28 @@ function getTotalOrder() {
   } else {
     totalPriceElement.textContent = `$0`
   }
+}
+
+function addCheckOutElement() {
+  const totalPrice = getTotalPrice()
+  const checkoutWrapper = document.querySelector(".complete-order-btn-wrapper")
+
+  if (totalPrice > 0) {
+    // if the div wrapper for btn does not exist, is falsy, then create the elements 
+    if(!checkoutWrapper) {
+      const div = document.createElement("div")
+      const completeOrderBtn = document.createElement("button")
+      completeOrderBtn.textContent = "Complete Order"
+      completeOrderBtn.classList.add("complete-order-btn")
+      div.classList.add("complete-order-btn-wrapper")
+      document.getElementById('order-items-container').append(div)
+      div.appendChild(completeOrderBtn)
+    }
+    // but if it does exist, then remove it - this should help with the complete order from rendering each time item is added to order
+  } else if(checkoutWrapper) {
+    checkoutWrapper.remove()
+  }
+
 }
 
 function updateOrderSection() {
@@ -102,6 +124,17 @@ function getItemsHTML() {
 
   return foodItemsArr
 }
+
+
+// function to store getting the total price 
+function getTotalPrice() {
+  const totalPrice = arrOfOrders.reduce((total, currentFoodItem) => {
+    return total + currentFoodItem.price
+  }, 0)
+
+  return totalPrice
+}
+
 function render() {
   document.getElementById('menu-items-container').innerHTML = getItemsHTML()
 }
