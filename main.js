@@ -21,7 +21,7 @@ function handleRemoveBtnClick(itemId) {
   // finding what index the item in question is at in the array of orders (so it knows what index to remove)
   const itemIndex = arrOfOrders.findIndex((item) => itemId === item.id.toString());
 
-  // meaning an index was found
+  // !== -1 means a value has been found
   if (itemIndex !== -1) {
     arrOfOrders.splice(itemIndex, 1); // Remove the item from the order
   }
@@ -33,8 +33,8 @@ function handleAddBtnClick(itemId) {
   const singleItemOrderObj = menuArray.filter(function(item) {
     return itemId === item.id.toString()
   })[0]
-  // if single object found, then add it to the orders array 
 
+  // if single object found, then add it to the orders array 
   if (singleItemOrderObj) {
     arrOfOrders.push(singleItemOrderObj)
   }
