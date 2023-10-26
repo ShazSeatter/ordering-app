@@ -50,7 +50,9 @@ function getTotalOrder() {
 
   if (arrOfOrders.length > 0) {
     totalPriceElement.textContent = `$${totalPrice}`
-  } 
+  } else {
+    totalPriceElement.textContent = `$0`
+  }
 }
 
 function updateOrderSection() {
