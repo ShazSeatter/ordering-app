@@ -77,7 +77,12 @@ h4, p {
   background-color: white;
   color: #3C3C3C;
   font-size: 30px; 
-  margin-right: auto; 
+  margin-right: auto;
+  cursor: pointer;
+}
+
+.add-btn:active {
+  background-color: #DEDEDE;
 }
 
 /* order section */
@@ -112,12 +117,24 @@ h4, p {
   align-self: center;
 }
 
+/* total cost section */
+
 .rm-btn {
   border: none;
   background-color: white;
   color: #BBBBBB;
+  cursor: pointer;
 }
 
-.hidden {
-  display: none;
+.rm-btn:hover {
+  text-decoration: underline;
 }
+
+.total-price-container {
+  font-size: 32px;
+  margin: 40px;
+  display: flex;
+  border-top: 4px solid black;
+  padding-top: 20px; 
+}
+

@@ -8,10 +8,26 @@ document.addEventListener('click', function(e) {
     handleAddBtnClick(e.target.dataset.add)
     updateOrderSection()
     getTotalOrder()
+  } else if (e.target.dataset.remove) {
+    handleRemoveBtnClick(e.target.dataset.remove) 
+    updateOrderSection()
+    getTotalOrder()
+
   }
 })
 
+function handleRemoveBtnClick(itemId) {
 
+  // finding what index the item in question is at in the array of orders (so it knows what index to remove)
+  const itemIndex = arrOfOrders.findIndex((item) => itemId === item.id.toString());
+
+  // meaning an index was found
+  if (itemIndex !== -1) {
+    arrOfOrders.splice(itemIndex, 1); // Remove the item from the order
+  }
+
+  console.log(arrOfOrders)
+}
 function handleAddBtnClick(itemId) {
 
   const singleItemOrderObj = menuArray.filter(function(item) {
@@ -30,28 +46,23 @@ function getTotalOrder() {
     return total + currentFoodItem.price
   }, 0)
   
-  const totalContainerElement = document.getElementById('total-price-container')
   const totalPriceElement = document.getElementById('total-price')
 
   if (arrOfOrders.length > 0) {
-    totalContainerElement.classList.remove('hidden')
     totalPriceElement.textContent = `$${totalPrice}`
-  } else {
-    totalContainerElement.classList.add('hidden')
-  }
-
+  } 
 }
 
 function updateOrderSection() {
 
   const orderSection = arrOfOrders.map((itemOrder) => {
-    const {name, price} = itemOrder
+    const {name, price, id} = itemOrder
     return `
       <div class="order-details-container">
         <div class="order-details-wrapper">
         <p class="added-item-name">${name}</p>
         <div class="btn-center">
-          <button class="rm-btn">remove</button>
+          <button class="rm-btn" data-remove=${id}>remove</button>
         </div>
         </div>
         <div class="price-wrapper">
@@ -62,6 +73,7 @@ function updateOrderSection() {
   }).join("")
 
   document.getElementById('order-container').innerHTML = orderSection
+
 }
 function getItemsHTML() {
   // need to map through data to add it to HTML template 
