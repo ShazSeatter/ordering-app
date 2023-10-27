@@ -53,7 +53,6 @@ function handlePayment() {
           arrOfOrders = []
           document.getElementById('order-items-container').innerHTML = renderTotalOrderSection()
         }, 2000)
-
   } else {
     alert("Please enter details before payment")
   }
