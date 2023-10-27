@@ -1,7 +1,7 @@
 
 import { menuArray } from "./data";
 
-const arrOfOrders = []
+let arrOfOrders = []
 
 document.addEventListener('click', function(e) {
   if (e.target.dataset.add) {
@@ -48,6 +48,12 @@ function handlePayment() {
         // Hide the pay modal
         const payModal = document.getElementById('pay-modal-inner');
         payModal.style.display = 'none';
+
+        setTimeout(() => {
+          arrOfOrders = []
+          document.getElementById('order-items-container').innerHTML = renderTotalOrderSection()
+        }, 2000)
+
   } else {
     alert("Please enter details before payment")
   }
@@ -189,6 +195,22 @@ function getTotalPrice() {
 
 function render() {
   document.getElementById('menu-items-container').innerHTML = getItemsHTML()
+  document.getElementById('order-items-container').innerHTML = renderTotalOrderSection()
+}
+
+function renderTotalOrderSection() {
+  return  `
+    <h3 class="order-title">Your order</h3>
+    <div id ="order-container" class="order-container">
+      <!-- order items render here -->
+    </div>
+    <div id="total-price-container" class="total-price-container">
+      <p>Total Price:</p>
+      <div class="price-wrapper">
+        <p id="total-price">$0</p>
+      </div>
+    </div>
+  `
 }
 
 render()
