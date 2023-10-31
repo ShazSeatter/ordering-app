@@ -62,7 +62,7 @@ function handlePayment() {
 function createStarRating() {
   const rateExperience = document.createElement('div');
   rateExperience.classList.add('payment-complete', "rating")
-  rateExperience.innerHTML = 'Rate your experience';
+  rateExperience.innerHTML = 'Rate your experience'
 
   const starsContainer = document.createElement('div')
   starsContainer.classList.add('stars-container', "rating")
@@ -71,19 +71,19 @@ function createStarRating() {
   for (let i = 0; i < 5; i++) {
    const starIcon = document.createElement("i")
    starIcon.classList.add('far', 'fa-light', 'fa-star')
-   starIcons.push(starIcon);
+   starIcons.push(starIcon)
 
    starIcon.addEventListener('click', function () {
     for (let j = 0; j <= i; j++) {
       if (starIcons[j].classList.contains('far')) {
-        starIcons[j].classList.remove('far');
-        starIcons[j].classList.add('fas'); // Use 'fas' for solid stars
+        starIcons[j].classList.remove('far')
+        starIcons[j].classList.add('fas') // Use 'fas' for solid stars
       }
     }
 
     for (let j = i + 1; j < starIcons.length; j++) {
-      starIcons[j].classList.remove('fas');
-      starIcons[j].classList.add('far');
+      starIcons[j].classList.remove('fas')
+      starIcons[j].classList.add('far')
     }
 
             
@@ -92,9 +92,9 @@ function createStarRating() {
       document.getElementById('order-items-container').innerHTML = renderTotalOrderSection()
     }, 4500)
 
-  });
+  })
 
-   starsContainer.appendChild(starIcon);
+   starsContainer.appendChild(starIcon)
   }
 
   rateExperience.appendChild(starsContainer)
