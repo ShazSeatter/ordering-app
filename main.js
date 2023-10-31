@@ -38,26 +38,70 @@ function handlePayment() {
         const paymentComplete = document.createElement('p');
         paymentComplete.classList.add('payment-complete');
         paymentComplete.textContent = `Thanks ${name}! Your order is on its way`;
-    
+
+        const starRating = createStarRating()
+
+
         // Append elements to the order container
         const orderContainer = document.getElementById('order-items-container');
         orderContainer.innerHTML = ''; // Clear existing content
         orderCompleteWrapper.appendChild(paymentComplete);
+        orderCompleteWrapper.appendChild(starRating)
         orderContainer.appendChild(orderCompleteWrapper);
+
     
         // Hide the pay modal
         const payModal = document.getElementById('pay-modal-inner');
         payModal.style.display = 'none';
-
-        setTimeout(() => {
-          arrOfOrders = []
-          document.getElementById('order-items-container').innerHTML = renderTotalOrderSection()
-        }, 2000)
   } else {
     alert("Please enter details before payment")
   }
 
 }
+
+function createStarRating() {
+  const rateExperience = document.createElement('div');
+  rateExperience.classList.add('payment-complete', "rating")
+  rateExperience.innerHTML = 'Rate your experience';
+
+  const starsContainer = document.createElement('div')
+  starsContainer.classList.add('stars-container', "rating")
+
+  const starIcons = [];
+  for (let i = 0; i < 5; i++) {
+   const starIcon = document.createElement("i")
+   starIcon.classList.add('far', 'fa-light', 'fa-star')
+   starIcons.push(starIcon);
+
+   starIcon.addEventListener('click', function () {
+    for (let j = 0; j <= i; j++) {
+      if (starIcons[j].classList.contains('far')) {
+        starIcons[j].classList.remove('far');
+        starIcons[j].classList.add('fas'); // Use 'fas' for solid stars
+      }
+    }
+
+    for (let j = i + 1; j < starIcons.length; j++) {
+      starIcons[j].classList.remove('fas');
+      starIcons[j].classList.add('far');
+    }
+
+            
+    setTimeout(() => {
+      arrOfOrders = []
+      document.getElementById('order-items-container').innerHTML = renderTotalOrderSection()
+    }, 4500)
+
+  });
+
+   starsContainer.appendChild(starIcon);
+  }
+
+  rateExperience.appendChild(starsContainer)
+  return rateExperience
+
+}
+
 function handlePurchaseOrderClick() {
   const payModal = document.getElementById('pay-modal-inner')
 
