@@ -12,7 +12,7 @@ html, body {
 }
 
 header {
-  padding: 30px 40px;
+  padding: 1.875em 2.5em; /* 30px 40px*/
   background-image: url("/images/header-img.png");
 }
 
@@ -34,10 +34,10 @@ h2 {
 .food-item-card {
   display: flex;
   gap: 20px;
-  margin: 40px; 
+  margin: 2.5em; /* 40px*/
   border-bottom: 1px solid #D2D2D2;
-  padding-bottom: 40px; 
-  padding-top: 20px;
+  padding-bottom: 2.5em; /* 40px */
+  padding-top: 1.25em; /* 20px */
 }
 
 h4, p {
@@ -59,7 +59,7 @@ h4, p {
 }
 
 .item-ingredients, .item-price {
-  margin-top: 7.5px;
+  margin-top: 0.469em; /* 7.5px */
   font-size: 1.25rem; /* 20px */
 }
 
@@ -75,7 +75,7 @@ h4, p {
   border-radius: 50%;
   width: 50px;
   height: 50px;
-  border: 2px solid #DEDEDE;
+  border: 2px solid #5c5252;
   background-color: white;
   color: #3C3C3C;
   font-size: 1.875rem; /* 30px */
@@ -93,18 +93,20 @@ h4, p {
   font-size: 2.375rem; /* 38px */
   text-align: center;
 }
+
 .order-container {
   display: flex;
   flex-direction: column;
-  margin: 40px; 
+  margin: 2.5em; /* 40px */
 }
+
 .order-details-container {
   display: flex;
- 
 }
+
 .order-details-wrapper {
   display: flex;
-  gap: 10px;
+  gap: 0.625em; /* 10px */
 }
 
 .added-item-name {
@@ -134,23 +136,24 @@ h4, p {
 
 .total-price-container {
   font-size: 2rem; /* 32px */
-  margin: 40px;
+  margin: 1.281em; /* 40px */
   display: flex;
   border-top: 4px solid black;
-  padding-top: 20px; 
+  padding-top: 0.625em; /* 20px */
 }
+
 .complete-order-btn-wrapper {
-  margin: 40px;
+  margin: 2.5em; /* 40px*/
 }
+
 .complete-order-btn {
   color: white;
   width: 100%;
   background-color: #16DB99;
   border: none;
-  font-size: 16px; 
+  font-size: 1rem; /* 16px*/
   font-weight: bold;
-  padding: 15px 25px; 
- 
+  padding: 0.937em 1.562em; /* 15px 25px */
 }
 
 /* pay section */
@@ -162,10 +165,11 @@ h4, p {
   left: 0;
   right: 0;
   flex-direction: column;
-  margin: 40px;
-  width: 300px;
+  margin: 2.5em;  /* 40px */
+  width: 100%;
+  max-width: 300px;
   margin: 0 auto;
-  padding: 38px 25px; 
+  padding: 2.375em 1.563em; /* 38px 25px */
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   box-shadow: 5px 5px 80px 1px #dcdbdb, -5px -5px 80px 1px #dcdbdb;
   background-color: white;
@@ -179,8 +183,8 @@ h4, p {
   border: 1.5px solid #555;
   color: #555;
   border-radius: 50%;
-  padding: 2px 6px;
-  font-size: 14px;
+  padding: 0.143em 0.429em; /* 2px 6px */
+  font-size: 0.875rem; /* 14px */
   cursor: pointer;
 }
 
@@ -191,7 +195,7 @@ h4, p {
 .card-details-heading {
   text-align: center;
   font-size: 1rem;
-  margin: 0 0 20px 0;
+  margin: 0 0 1.25em 0; /* 0 0 20px 0 */
 }
 
 form {
@@ -200,36 +204,37 @@ form {
 }
 
 input[type=text] {
-  padding: 13px 20px;
+  padding: 0.81em 1.25em; /* 13px 20px */
   color: #757575;
-  margin-top: 14px; 
+  margin-top: 0.875em; /* 14px */
   border: 1px solid #757575;
-  font-size: 16px; 
+  font-size: 1rem; /* 16px */
   border-radius: 2px;
 }
 
 .pay-btn {
   background-color: #16DB99;
   width: 100%;
-  padding: 15px 25px;
+  padding: 0.948em 1.563em; /* 15px 25px */
   color: white;
   font-weight: bold;
   border: none;
-  margin-top: 30px; 
+  margin-top: 1.875em; /* 30px */
   border-radius: 2px;
+  font-size: 1rem;
 }
 
 .order-complete-wrapper {
   background-color: #ECFDF5;
-  margin: 40px 40px 60px 40px;
-  padding: 30px;
+  margin: 2.5em 2.5em 3.75em 2.5em; /* 40px 40px 60px 40px*/
+  padding: 1.875em; /* 30px */
 }
 .payment-complete {
   text-align: center;
   color: #065F46;
-  font-size: 25px; 
+  font-size: 1.563rem; /* 25px */
 }
 
 .rating {
-  margin-top: 10px;
+  margin-top: 0.625em; /* 10px */
 }
